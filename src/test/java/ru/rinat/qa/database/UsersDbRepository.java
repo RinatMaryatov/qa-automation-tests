@@ -1,6 +1,7 @@
 
 package ru.rinat.qa.database;
 
+import ru.rinat.qa.infrastructure.database.DatabaseConnection;
 import ru.rinat.qa.models.db.UserDbRecord;
 
 import java.sql.Connection;

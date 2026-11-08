@@ -1,5 +1,5 @@
 
-package ru.rinat.qa.database;
+package ru.rinat.qa.infrastructure.database;
 
 import ru.rinat.qa.config.ConfigManager;
 

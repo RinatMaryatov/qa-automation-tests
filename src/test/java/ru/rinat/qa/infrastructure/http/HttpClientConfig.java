@@ -1,5 +1,5 @@
 
-package ru.rinat.qa.infrastructure;
+package ru.rinat.qa.infrastructure.http;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;

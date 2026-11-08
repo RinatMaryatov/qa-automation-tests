@@ -3,7 +3,7 @@ package ru.rinat.qa.infrastructure.health;
 
 import ru.rinat.qa.config.ConfigManager;
 import ru.rinat.qa.config.TestConfig;
-import ru.rinat.qa.infrastructure.HttpClientConfig;
+import ru.rinat.qa.infrastructure.http.HttpClientConfig;
 
 import java.time.Duration;
 
