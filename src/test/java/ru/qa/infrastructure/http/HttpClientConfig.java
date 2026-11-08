@@ -15,6 +15,10 @@ public final class HttpClientConfig {
     }
 
     public static RequestSpecification forBaseUrl(String baseUrl) {
+        return forBaseUrl(baseUrl, true);
+    }
+
+    public static RequestSpecification forBaseUrl(String baseUrl, boolean attachAllure) {
 
         TestConfig config = ConfigManager.getConfig();
         RequestSpecBuilder builder = new RequestSpecBuilder();
@@ -22,7 +26,9 @@ public final class HttpClientConfig {
         builder.setContentType(ContentType.JSON);
         builder.setAccept(ContentType.JSON);
 
-        builder.addFilter(new AllureRestAssured());
+        if (attachAllure) {
+            builder.addFilter(new AllureRestAssured());
+        }
 
         if (config.proxyEnabled()) {
 

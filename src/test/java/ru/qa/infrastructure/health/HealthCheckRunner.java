@@ -51,8 +51,7 @@ public final class HealthCheckRunner {
                     try {
 
                         Response response = given()
-                                .spec(HttpClientConfig.forBaseUrl(baseUrl))
-                                .when()
+                                .spec(HttpClientConfig.forBaseUrl(baseUrl, false))                                .when()
                                 .get(path);
 
                         int statusCode = response.statusCode();
