@@ -78,6 +78,7 @@ public class UserCreationTest {
         });
     }
 
+
     @AfterEach
     void cleanup() {
 
@@ -85,16 +86,24 @@ public class UserCreationTest {
             return;
         }
 
-        Allure.step("Удаляем созданного пользователя через DELETE /api/users/{id}", () -> {
+        Allure.step("Удаляем созданного пользователя", () -> {
 
             usersDbRepository.findByEmail(createdUserEmail)
                     .ifPresent(user -> {
+
                         Response response = usersApiClient.deleteUser(user.id());
 
                         assertThat(response.statusCode())
                                 .isIn(200, 204);
                     });
         });
+
+        Allure.step("Проверяем удаление пользователя из PostgreSQL", () -> {
+
+            assertThat(usersDbRepository.findByEmail(createdUserEmail))
+                    .isEmpty();
+        });
     }
+
 
 }
