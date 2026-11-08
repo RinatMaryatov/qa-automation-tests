@@ -2,14 +2,11 @@
 package ru.qa.infrastructure.health;
 
 import io.restassured.response.Response;
+import ru.qa.config.AwaitilityConfig;
 import ru.qa.config.ConfigManager;
 import ru.qa.config.TestConfig;
 import ru.qa.infrastructure.http.HttpClientConfig;
-
-import java.time.Duration;
-
 import static io.restassured.RestAssured.given;
-import static org.awaitility.Awaitility.await;
 
 public final class HealthCheckRunner {
 
@@ -42,16 +39,15 @@ public final class HealthCheckRunner {
     ) {
 
         System.out.println("Checking: " + serviceName);
+        long startTime = System.currentTimeMillis();
 
-        await()
-                .atMost(Duration.ofSeconds(90))
-                .pollInterval(Duration.ofSeconds(3))
+        AwaitilityConfig.asyncWait()
                 .until(() -> {
 
                     try {
-
                         Response response = given()
-                                .spec(HttpClientConfig.forBaseUrl(baseUrl, false))                                .when()
+                                .spec(HttpClientConfig.forBaseUrl(baseUrl, false))
+                                .when()
                                 .get(path);
 
                         int statusCode = response.statusCode();
@@ -71,7 +67,10 @@ public final class HealthCheckRunner {
                         return false;
                     }
                 });
+        long elapsedTime = System.currentTimeMillis() - startTime;
 
-        System.out.println(serviceName + " is READY!");
+        System.out.println(
+                serviceName + " is READY! Time: " + elapsedTime + " ms"
+        );
     }
 }
