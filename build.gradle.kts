@@ -42,6 +42,7 @@ dependencies {
     // Ожидание асинхронных операций
     testImplementation("org.awaitility:awaitility:4.3.0")
 
+
     // Конфигурация окружений
     testImplementation("org.aeonbits.owner:owner:1.0.12")
 
@@ -71,3 +72,23 @@ tasks.test {
         events("passed", "failed", "skipped")
     }
 }
+
+
+val healthCheck by tasks.registering(JavaExec::class) {
+
+    group = "verification"
+    description = "Check services before running tests"
+
+    dependsOn(tasks.testClasses)
+
+    classpath = sourceSets["test"].runtimeClasspath
+
+    mainClass.set(
+        "ru.rinat.qa.infrastructure.health.HealthCheckRunner"
+    )
+}
+
+tasks.named<Test>("test") {
+    dependsOn(healthCheck)
+}
+

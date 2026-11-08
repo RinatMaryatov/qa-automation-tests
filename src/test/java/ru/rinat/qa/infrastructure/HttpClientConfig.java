@@ -1,5 +1,5 @@
 
-package ru.rinat.qa.infrastructure.http;
+package ru.rinat.qa.infrastructure;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -32,8 +32,7 @@ public final class HttpClientConfig {
             if (proxyUser == null || proxyUser.isBlank()
                     || proxyPassword == null || proxyPassword.isBlank()) {
                 throw new IllegalStateException(
-                        "Проки активен, но PROXY_USER или PROXY_PASSWORD отсутствует"
-                );
+                        "Proxy is enabled, but PROXY_USER or PROXY_PASSWORD is missing"                );
             }
 
             ProxySpecification proxy = ProxySpecification
