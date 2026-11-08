@@ -75,7 +75,7 @@ org.codehaus.groovy.runtime.ArrayUtil
 	at io.restassured.config.RestAssuredConfig.<init>(RestAssuredConfig.java:41)
 	at io.restassured.RestAssured.<clinit>(RestAssured.java:422)
 	at ru.rinat.qa.clients.UsersApiClient.getAllUsers(UsersApiClient.java:16)
-	at ru.rinat.qa.tests.UsersApiTest.firstTest(UsersApiTest.java:15)
+	at ru.rinat.qa.tests.api.GetUsersTest.firstTest(UsersApiTest.java:15)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:786)

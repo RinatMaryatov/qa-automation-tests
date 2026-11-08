@@ -20,4 +20,7 @@ public interface TestConfig extends Config{
 
     @Key("proxy.port")
     int proxyPort();
+
+    @Config.Key("db.users.url")
+    String usersDbUrl();
 }

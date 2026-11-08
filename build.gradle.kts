@@ -53,6 +53,9 @@ dependencies {
 
     // Логирование
     testRuntimeOnly("org.slf4j:slf4j-simple:2.0.20")
+
+    // Тестовые данные
+    testImplementation("net.datafaker:datafaker:2.4.4")
 }
 
 allure {
