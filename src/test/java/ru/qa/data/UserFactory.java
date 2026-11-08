@@ -1,10 +1,10 @@
 
-package ru.rinat.qa.data;
+package ru.qa.data;
 
 import net.datafaker.Faker;
-import ru.rinat.qa.models.Geolocation;
-import ru.rinat.qa.models.UserData;
-import ru.rinat.qa.models.UserRequest;
+import ru.qa.models.Geolocation;
+import ru.qa.models.UserData;
+import ru.qa.models.UserRequest;
 
 import java.util.Locale;
 import java.util.UUID;

@@ -1,8 +1,8 @@
 
-package ru.rinat.qa.database;
+package ru.qa.database;
 
-import ru.rinat.qa.infrastructure.database.DatabaseConnection;
-import ru.rinat.qa.models.db.UserDbRecord;
+import ru.qa.infrastructure.database.DatabaseConnection;
+import ru.qa.models.db.UserDbRecord;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

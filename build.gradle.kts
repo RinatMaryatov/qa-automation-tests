@@ -84,7 +84,7 @@ val healthCheck by tasks.registering(JavaExec::class) {
     classpath = sourceSets["test"].runtimeClasspath
 
     mainClass.set(
-        "ru.rinat.qa.infrastructure.health.HealthCheckRunner"
+        "ru.qa.infrastructure.health.HealthCheckRunner"
     )
 }
 

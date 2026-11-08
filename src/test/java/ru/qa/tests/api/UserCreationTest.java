@@ -1,15 +1,15 @@
-package ru.rinat.qa.tests.api;
+package ru.qa.tests.api;
 
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.rinat.qa.clients.UsersApiClient;
-import ru.rinat.qa.data.UserFactory;
-import ru.rinat.qa.database.UsersDbRepository;
-import ru.rinat.qa.models.UserRequest;
-import ru.rinat.qa.models.db.UserDbRecord;
+import ru.qa.clients.UsersApiClient;
+import ru.qa.data.UserFactory;
+import ru.qa.database.UsersDbRepository;
+import ru.qa.models.UserRequest;
+import ru.qa.models.db.UserDbRecord;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

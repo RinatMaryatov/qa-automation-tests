@@ -1,4 +1,4 @@
-package ru.rinat.qa.models.db;
+package ru.qa.models.db;
 
 public record UserDbRecord(
         Long id,

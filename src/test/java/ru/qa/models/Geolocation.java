@@ -1,4 +1,4 @@
-package ru.rinat.qa.models;
+package ru.qa.models;
 
 public record Geolocation(
         String country,

@@ -1,7 +1,7 @@
 
-package ru.rinat.qa.infrastructure.database;
+package ru.qa.infrastructure.database;
 
-import ru.rinat.qa.config.ConfigManager;
+import ru.qa.config.ConfigManager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

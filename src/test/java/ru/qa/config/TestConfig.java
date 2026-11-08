@@ -1,4 +1,4 @@
-package ru.rinat.qa.config;
+package ru.qa.config;
 
 import org.aeonbits.owner.Config;
 

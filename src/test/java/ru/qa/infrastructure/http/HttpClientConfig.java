@@ -1,13 +1,13 @@
 
-package ru.rinat.qa.infrastructure.http;
+package ru.qa.infrastructure.http;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ProxySpecification;
 import io.restassured.specification.RequestSpecification;
-import ru.rinat.qa.config.ConfigManager;
-import ru.rinat.qa.config.TestConfig;
+import ru.qa.config.ConfigManager;
+import ru.qa.config.TestConfig;
 
 public final class HttpClientConfig {
 

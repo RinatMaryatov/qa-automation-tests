@@ -1,10 +1,10 @@
 
-package ru.rinat.qa.clients;
+package ru.qa.clients;
 
 import io.restassured.response.Response;
-import ru.rinat.qa.config.ConfigManager;
-import ru.rinat.qa.infrastructure.http.HttpClientConfig;
-import ru.rinat.qa.models.UserRequest;
+import ru.qa.config.ConfigManager;
+import ru.qa.infrastructure.http.HttpClientConfig;
+import ru.qa.models.UserRequest;
 
 import static io.restassured.RestAssured.given;
 
