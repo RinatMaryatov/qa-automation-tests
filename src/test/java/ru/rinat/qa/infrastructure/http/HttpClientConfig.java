@@ -1,6 +1,7 @@
 
 package ru.rinat.qa.infrastructure.http;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ProxySpecification;
@@ -20,6 +21,8 @@ public final class HttpClientConfig {
         builder.setBaseUri(baseUrl);
         builder.setContentType(ContentType.JSON);
         builder.setAccept(ContentType.JSON);
+
+        builder.addFilter(new AllureRestAssured());
 
         if (config.proxyEnabled()) {
 
