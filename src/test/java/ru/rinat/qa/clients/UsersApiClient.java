@@ -31,4 +31,13 @@ public class UsersApiClient {
                 .post("/api/users");
     }
 
+    public Response deleteUser(long id) {
+        String baseUrl = ConfigManager.getConfig().usersBaseUrl();
+
+        return given()
+                .spec(HttpClientConfig.forBaseUrl(baseUrl))
+                .when()
+                .delete("/api/users/{id}", id);
+    }
+
 }

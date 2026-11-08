@@ -1,6 +1,8 @@
 package ru.rinat.qa.tests.api;
 
+import io.qameta.allure.Allure;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.rinat.qa.clients.UsersApiClient;
@@ -16,19 +18,22 @@ public class UserCreationTest {
 
     private final UsersApiClient usersApiClient = new UsersApiClient();
 
-    private final UsersDbRepository usersDbRepository =
-            new UsersDbRepository();
+    private final UsersDbRepository usersDbRepository = new UsersDbRepository();
+
+    private String createdUserEmail;
 
     @Test
     @DisplayName("POST /api/users — успешное создание пользователя")
     public void createUserTest() {
-
 
         // Шаг 1. Генерация тестовых данных
         UserRequest request = step(
                 "Подготавливаем случайного пользователя",
                 () -> UserFactory.randomUser()
         );
+
+        // Сохранили email сгенерированного пользователя для будущего удаления
+        createdUserEmail = request.data().email();
 
         // Шаг 2. Создание пользователя через API
         Response response = step(
@@ -73,6 +78,23 @@ public class UserCreationTest {
         });
     }
 
+    @AfterEach
+    void cleanup() {
 
+        if (createdUserEmail == null) {
+            return;
+        }
+
+        Allure.step("Удаляем созданного пользователя через DELETE /api/users/{id}", () -> {
+
+            usersDbRepository.findByEmail(createdUserEmail)
+                    .ifPresent(user -> {
+                        Response response = usersApiClient.deleteUser(user.id());
+
+                        assertThat(response.statusCode())
+                                .isIn(200, 204);
+                    });
+        });
+    }
 
 }
