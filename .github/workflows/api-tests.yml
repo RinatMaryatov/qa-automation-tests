@@ -1,3 +1,4 @@
+
 name: QA Automation Tests
 
 on:
@@ -48,3 +49,33 @@ jobs:
             build/reports/tests/test/
           if-no-files-found: warn
           retention-days: 7
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Check Allure report
+        run: test -f build/reports/allure-report/allureReport/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/reports/allure-report/allureReport
+
+  deploy:
+    name: Publish Allure Report
+    needs: api-tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
